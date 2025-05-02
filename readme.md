@@ -46,23 +46,35 @@ Untuk mencapai tujuan yang telah disebutkan, berikut adalah pendekatan solusi ya
 
 ## Data Understanding
 
-Proyek ini menggunakan dataset MovieLens Small yang berisi 100.000 rating dan 3.600 tag dari 610 pengguna pada 9.742 film. Dataset ini dapat diunduh dari [GroupLens Research](https://grouplens.org/datasets/movielens/latest/). Dataset terdiri dari beberapa file, namun dalam proyek ini hanya digunakan tiga file utama:
+Proyek ini menggunakan dataset MovieLens Small yang dapat diunduh dari [GroupLens Research](https://grouplens.org/datasets/movielens/latest/). Dataset ini adalah kumpulan data rating film yang dikembangkan oleh GroupLens Research di University of Minnesota sebagai sumber data untuk penelitian sistem rekomendasi.
 
-1. **movies.csv**: Berisi informasi tentang film (9.742 baris)
-2. **ratings.csv**: Berisi data rating pengguna terhadap film (100.836 baris)
-3. **tags.csv**: Berisi tag yang diberikan pengguna pada film (3.683 baris)
+### Jumlah Data dan Struktur Dataset
+
+Dataset terdiri dari beberapa file, namun dalam proyek ini hanya digunakan tiga file utama:
+
+1. **movies.csv**: 
+   - Jumlah baris: 9.742 film
+   - Jumlah kolom: 3 (movieId, title, genres)
+
+2. **ratings.csv**: 
+   - Jumlah baris: 100.836 rating
+   - Jumlah kolom: 4 (userId, movieId, rating, timestamp)
+
+3. **tags.csv**: 
+   - Jumlah baris: 3.683 tag
+   - Jumlah kolom: 4 (userId, movieId, tag, timestamp)
 
 ### Variabel-variabel pada dataset:
 
 **movies.csv**:
 - `movieId`: Identifier unik untuk setiap film
 - `title`: Judul film beserta tahun rilis dalam kurung
-- `genres`: Kategori genre film yang dipisahkan dengan pipe (|)
+- `genres`: Kategori genre film yang dipisahkan dengan pipe (|), contoh: "Comedy|Romance|Drama"
 
 **ratings.csv**:
 - `userId`: Identifier unik untuk setiap pengguna
 - `movieId`: Identifier unik untuk setiap film
-- `rating`: Rating yang diberikan pengguna (skala 0.5-5.0)
+- `rating`: Rating yang diberikan pengguna (skala 0.5-5.0 dengan interval 0.5)
 - `timestamp`: Waktu rating diberikan (dalam format Unix timestamp)
 
 **tags.csv**:
@@ -70,6 +82,20 @@ Proyek ini menggunakan dataset MovieLens Small yang berisi 100.000 rating dan 3.
 - `movieId`: Identifier unik untuk setiap film
 - `tag`: Tag teks yang diberikan oleh pengguna untuk film
 - `timestamp`: Waktu tag diberikan (dalam format Unix timestamp)
+
+### Kondisi Data
+
+Hasil pemeriksaan kondisi data menunjukkan:
+
+1. **Missing Values**:
+   - Tidak ditemukan missing values pada ketiga dataset (movies.csv, ratings.csv, dan tags.csv).
+
+2. **Data Duplikat**:
+   - Tidak terdapat data duplikat pada ketiga dataset.
+
+3. **Outlier**:
+   - Pada dataset ratings.csv, teridentifikasi 4.181 rating sebagai outlier berdasarkan metode IQR (Interquartile Range).
+   - Outlier ini tetap dipertahankan dalam analisis karena masih berada dalam rentang nilai rating yang valid (0.5-5.0) dan mencerminkan preferensi unik pengguna.
 
 ### Exploratory Data Analysis
 
@@ -90,10 +116,6 @@ Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi
 4. **Pengguna Paling Aktif**:
    
    Ditemukan 20 pengguna yang memberikan rating terbanyak. Pengguna-pengguna aktif ini mungkin memiliki preferensi yang lebih spesifik dan dapat memberikan wawasan lebih dalam terhadap perilaku penonton.
-
-5. **Analisis Outlier**:
-   
-   Menggunakan metode IQR (Interquartile Range), teridentifikasi 4.181 rating sebagai outlier. Outlier ini tetap dipertahankan karena masih dalam rentang nilai rating yang valid (0.5-5.0) dan mungkin mencerminkan preferensi unik pengguna.
 
 ## Data Preparation
 
@@ -190,6 +212,16 @@ def recommend_content(title, top_n=5):
 3. Cosine similarity digunakan sebagai metrik untuk mengukur kemiripan antar film
 4. Film terdekat (kecuali film itu sendiri) direkomendasikan kepada pengguna
 
+**Parameter yang Digunakan:**
+- **TfidfVectorizer**:
+  - `stop_words='english'`: Menghilangkan kata-kata umum dalam bahasa Inggris seperti "the", "a", "in", dll.
+  - Parameter lain menggunakan nilai default
+
+- **NearestNeighbors**:
+  - `metric='cosine'`: Menggunakan cosine similarity sebagai metrik jarak
+  - `algorithm='brute'`: Menggunakan brute force search untuk mencari tetangga terdekat
+  - `n_neighbors=top_n+1`: Mencari top_n+1 tetangga terdekat (termasuk film itu sendiri)
+
 **Contoh Hasil Rekomendasi:**
 
 Untuk film "Pinocchio (1940)", sistem merekomendasikan film-film animasi serupa yang memiliki genre dan tag yang mirip.
@@ -231,7 +263,21 @@ class RecommenderNet(tf.keras.Model):
         return tf.nn.sigmoid(x)
 ```
 
-Model dilatih selama 10 epoch dengan batch size 64:
+**Parameter yang Digunakan:**
+- **Model Arsitektur**:
+  - `embedding_size=50`: Dimensi embedding untuk representasi pengguna dan film
+  - `embeddings_initializer='he_normal'`: Inisialisasi bobot menggunakan distribusi He Normal
+  - `embeddings_regularizer=keras.regularizers.l2(1e-6)`: L2 regularization untuk mencegah overfitting
+
+- **Kompilasi Model**:
+  - `loss=tf.keras.losses.BinaryCrossentropy()`: Fungsi loss untuk nilai target yang dinormalisasi (0-1)
+  - `optimizer=keras.optimizers.Adam(learning_rate=0.001)`: Optimizer Adam dengan learning rate 0.001
+  - `metrics=[tf.keras.metrics.RootMeanSquaredError()]`: Metrik evaluasi menggunakan RMSE
+
+- **Pelatihan Model**:
+  - `batch_size=64`: Jumlah sampel yang diproses dalam satu iterasi
+  - `epochs=10`: Jumlah iterasi pelatihan pada seluruh dataset
+  - `validation_data=(x_val, y_val)`: Data validasi untuk evaluasi performa model
 
 ```python
 model = RecommenderNet(num_users, num_movies, embedding_size=50)
@@ -253,6 +299,7 @@ history = model.fit(
 3. Dot product antara vektor pengguna dan film digunakan untuk memprediksi rating
 4. Bias pengguna dan film ditambahkan untuk menangkap preferensi umum
 5. Fungsi sigmoid digunakan untuk mendapatkan prediksi rating dalam rentang 0-1
+6. Model dilatih dengan meminimalkan binary cross-entropy antara rating prediksi dan rating sebenarnya
 
 **Contoh Hasil Rekomendasi:**
 
@@ -272,7 +319,7 @@ Untuk pengguna dengan ID 356, sistem menampilkan:
 
 ## Evaluation
 
-Evaluasi model dalam proyek ini dilakukan dengan beberapa metrik:
+Evaluasi model dalam proyek ini dilakukan dengan beberapa metrik dan juga dikaitkan dengan business understanding yang telah ditetapkan sebelumnya.
 
 ### 1. Root Mean Squared Error (RMSE)
 
@@ -280,7 +327,7 @@ RMSE digunakan untuk mengevaluasi model collaborative filtering berbasis deep le
 
 Formula RMSE:
 
-$$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$$
+$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$
 
 Dimana:
 - $y_i$ adalah rating sebenarnya
@@ -309,6 +356,36 @@ Evaluasi berpusat pada pengguna dilakukan dengan melihat kesesuaian rekomendasi 
 
 - **Novelty**: Model collaborative filtering mampu merekomendasikan film yang mungkin belum pernah dilihat pengguna tetapi memiliki kemungkinan disukai berdasarkan preferensi mereka.
 
+### Keterkaitan dengan Business Understanding
+
+#### Pernyataan Masalah 1: Sistem Rekomendasi berbasis Konten
+- **Goal**: Mengembangkan model rekomendasi berbasis konten yang dapat merekomendasikan film berdasarkan kesamaan genre dan tag.
+- **Solusi**: Implementasi model content-based filtering menggunakan TF-IDF dan Nearest Neighbors.
+- **Hasil**: Model berhasil memberikan rekomendasi film yang memiliki kesamaan konten (genre dan tag) dengan film referensi. Misalnya, untuk film "Pinocchio (1940)", sistem merekomendasikan film-film animasi serupa.
+- **Dampak Bisnis**: Sistem ini dapat membantu platform mengatasi cold-start problem dan memberikan rekomendasi untuk film baru yang belum memiliki banyak rating. Ini meningkatkan eksposur katalog film dan membantu pengguna menemukan konten serupa yang mungkin mereka sukai.
+
+#### Pernyataan Masalah 2: Sistem Rekomendasi berbasis Interaksi Pengguna
+- **Goal**: Membangun sistem rekomendasi yang dapat mempelajari pola preferensi pengguna berdasarkan interaksi mereka dengan film.
+- **Solusi**: Implementasi model collaborative filtering dengan deep learning menggunakan lapisan embedding.
+- **Hasil**: Model mencapai RMSE 0.203 pada data validasi, menunjukkan kemampuan yang baik dalam memprediksi rating. Model berhasil memberikan rekomendasi personal untuk pengguna berdasarkan pola rating mereka.
+- **Dampak Bisnis**: Sistem ini dapat meningkatkan pengalaman pengguna dengan menyajikan konten yang lebih personal, meningkatkan engagement, dan mendorong pengguna untuk menghabiskan lebih banyak waktu di platform. Penelitian menunjukkan bahwa rekomendasi personal dapat meningkatkan konversi hingga 35%.
+
+#### Pernyataan Masalah 3: Evaluasi Sistem Rekomendasi
+- **Goal**: Mengukur keberhasilan sistem rekomendasi yang telah dikembangkan.
+- **Solusi**: Menggunakan RMSE untuk model collaborative filtering dan evaluasi kualitatif untuk content-based filtering.
+- **Hasil**: RMSE sebesar 0.203 menunjukkan akurasi prediksi yang baik. Evaluasi kualitatif menunjukkan bahwa rekomendasi content-based filtering relevan dengan film referensi.
+- **Dampak Bisnis**: Dengan metrik evaluasi yang jelas, bisnis dapat terus memantau dan meningkatkan kualitas rekomendasi, yang pada akhirnya dapat meningkatkan kepuasan pengguna dan retensi.
+
+### Dampak Solusi Statement
+
+1. **Content-Based Filtering dengan TF-IDF dan Nearest Neighbors**:
+   - **Dampak**: Solusi ini berhasil memberikan rekomendasi berdasarkan konten film, membantu mengatasi cold-start problem, dan meningkatkan eksposur katalog film yang mungkin tidak populer tetapi relevan dengan minat pengguna.
+   - **Bisnis Impact**: Meningkatkan eksposur katalog film yang lebih luas, meningkatkan penemuan konten (content discovery), dan mengurangi churn rate dengan memberikan alternatif yang relevan ketika pengguna telah menonton film favorit mereka.
+
+2. **Collaborative Filtering dengan Deep Learning**:
+   - **Dampak**: Solusi ini berhasil mempelajari pola tersembunyi dalam preferensi pengguna dan memberikan rekomendasi personal yang relevan, meningkatkan pengalaman pengguna.
+   - **Bisnis Impact**: Meningkatkan engagement pengguna, memperpanjang waktu yang dihabiskan di platform, dan meningkatkan retensi pengguna. Sistem ini juga dapat meningkatkan konversi jika platform menggunakan model bisnis berbayar.
+
 ### Perbandingan dan Kesimpulan
 
 Kedua model rekomendasi yang dikembangkan dalam proyek ini memiliki kelebihan dan kekurangan masing-masing:
@@ -317,4 +394,4 @@ Kedua model rekomendasi yang dikembangkan dalam proyek ini memiliki kelebihan da
 
 2. **Collaborative Filtering dengan Deep Learning** memberikan rekomendasi yang lebih personal dengan mempelajari pola preferensi pengguna. Model ini mencapai RMSE yang baik (0.203) pada data validasi dan mampu memberikan rekomendasi yang beragam.
 
-Untuk pengembangan sistem rekomendasi film yang komprehensif, pendekatan hybrid yang menggabungkan kedua metode ini dapat menjadi solusi optimal untuk mengatasi kelemahan masing-masing metode dan meningkatkan kualitas rekomendasi secara keseluruhan.
+Dari perspektif bisnis, implementasi kedua model sebagai sistem rekomendasi hybrid dapat memberikan hasil terbaik. Content-based filtering dapat mengatasi cold-start problem dan memperluas eksposur katalog, sementara collaborative filtering dapat meningkatkan personalisasi dan engagement pengguna. Kombinasi keduanya dapat meningkatkan kepuasan pengguna, retensi, dan pada akhirnya, pendapatan platform.
