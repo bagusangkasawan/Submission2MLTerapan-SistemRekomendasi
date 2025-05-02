@@ -279,6 +279,7 @@ Evaluasi model dalam proyek ini dilakukan dengan beberapa metrik:
 RMSE digunakan untuk mengevaluasi model collaborative filtering berbasis deep learning. RMSE mengukur akar kuadrat dari rata-rata selisih kuadrat antara rating prediksi dan rating sebenarnya.
 
 Formula RMSE:
+
 $$RMSE = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$$
 
 Dimana:
