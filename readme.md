@@ -9,8 +9,8 @@ Netflix telah menemukan bahwa lebih dari 80% film yang ditonton di platform mere
 Proyek ini bertujuan untuk mengembangkan sistem rekomendasi film yang dapat membantu pengguna menemukan film yang sesuai dengan minat mereka. Dengan menggunakan dataset MovieLens yang berisi rating dan tag film dari ribuan pengguna, proyek ini akan mengimplementasikan dan membandingkan dua pendekatan sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering berbasis Deep Learning.
 
 **Referensi:**
-- Gomez-Uribe, C.A., & Hunt, N. (2015). The Netflix recommender system: Algorithms, business value, and innovation. *ACM Transactions on Management Information Systems*, 6(4), 1-19. Retrieved from [https://dl.acm.org/doi/10.1145/2843948](https://dl.acm.org/doi/10.1145/2843948).
-- Bounsaythip, K., & Rinta-Runsala, E. (2001). Overview of data mining for customer behavior modeling. *VTT Information Technology, Research Report TTE1-2001-18*. Retrieved from [https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers).
+- Gomez-Uribe, C.A., & Hunt, N. (2015). The Netflix recommender system: Algorithms, business value, and innovation. *ACM Transactions on Management Information Systems*, 6(4), 1-19. Available at [https://dl.acm.org/doi/10.1145/2843948](https://dl.acm.org/doi/10.1145/2843948).
+- Bounsaythip, K., & Rinta-Runsala, E. (2001). Overview of data mining for customer behavior modeling. *VTT Information Technology, Research Report TTE1-2001-18*. Available at [https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers).
 
 ## Business Understanding
 
