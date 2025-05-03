@@ -101,34 +101,24 @@ Hasil pemeriksaan kondisi data menunjukkan:
 
 Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi data:
 
-1. **Distribusi Rating**
-
+1. **Distribusi Rating**   
    ![Distribusi Rating](images/box_plot_rating.png)  
-   
    **Penjelasan:** Berdasarkan box plot yang dibuat, mayoritas rating berada pada rentang 3 hingga 4, menunjukkan bahwa pengguna cenderung memberikan rating positif untuk film yang mereka tonton.
 
-2. **Distribusi Genre Film**
-
-   ![Distribusi Genre Film](images/bar_chart_genre.png)
-   
+2. **Distribusi Genre Film**  
+   ![Distribusi Genre Film](images/bar_chart_genre.png)  
    **Penjelasan:** Hasil analisis menunjukkan bahwa Drama adalah genre film yang paling umum dalam dataset, diikuti oleh Comedy. Hal ini mengindikasikan bahwa film bergenre ini memiliki jumlah terbanyak dan kemungkinan memiliki minat tinggi dari pengguna.
 
-3. **Heatmap Korelasi**
-
-   ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png)
-   
+3. **Heatmap Korelasi** 
+   ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png) 
    **Penjelasan:** Heatmap korelasi menunjukkan hubungan antar variabel dalam dataset rating. Terlihat bahwa `movieId` dan `timestamp` memiliki korelasi 0.50, yang menunjukkan pola rating film pada periode waktu tertentu.
 
-4. **Film dengan Rating Terbanyak**
-   
-   ![Film dengan Rating Terbanyak](images/bar_chart_movie.png)
-   
+4. **Film dengan Rating Terbanyak** 
+   ![Film dengan Rating Terbanyak](images/bar_chart_movie.png) 
    **Penjelasan:** Visualisasi menunjukkan 20 film yang paling banyak dinilai oleh pengguna. Informasi ini penting untuk memahami film populer yang dapat menjadi dasar dalam rekomendasi berbasis popularitas.
 
-5. **Pengguna Paling Aktif**
-   
-   ![Pengguna Paling Aktif](images/bar_chart_user.png)
-   
+5. **Pengguna Paling Aktif**  
+   ![Pengguna Paling Aktif](images/bar_chart_user.png)   
    **Penjelasan:** Ditemukan 20 pengguna yang memberikan rating terbanyak. Pengguna-pengguna aktif ini mungkin memiliki preferensi yang lebih spesifik dan dapat memberikan wawasan lebih dalam terhadap perilaku penonton.
 
 ## Data Preparation
