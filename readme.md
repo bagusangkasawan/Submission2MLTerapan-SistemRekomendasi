@@ -191,7 +191,7 @@ x_train, x_val, y_train, y_val = train_test_split(x, y, test_size=0.2, random_st
 
 Data dibagi menjadi set training (80%) dan validasi (20%) untuk melatih dan mengevaluasi model. Random state ditetapkan untuk memastikan reprodusibilitas hasil.
 
-## Modeling
+## Modeling and Result
 
 Dalam proyek ini, dua pendekatan sistem rekomendasi diimplementasikan: Content-Based Filtering dan Collaborative Filtering dengan Deep Learning.
 
