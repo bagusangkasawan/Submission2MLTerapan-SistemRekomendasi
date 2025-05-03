@@ -9,8 +9,8 @@ Menurut penelitian yang dilakukan oleh Netflix, lebih dari 80% film yang ditonto
 Proyek ini bertujuan untuk mengembangkan sistem rekomendasi film yang dapat membantu pengguna menemukan film yang sesuai dengan minat mereka. Dengan menggunakan dataset MovieLens yang berisi rating dan tag film dari ribuan pengguna, proyek ini akan mengimplementasikan dan membandingkan dua pendekatan sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering berbasis Deep Learning.
 
 **Referensi:**
-- [[1] C. A. Gomez-Uribe and N. Hunt, "The Netflix recommender system: Algorithms, business value, and innovation," ACM Transactions on Management Information Systems, vol. 6, no. 4, pp. 1-19, 2015.](https://dl.acm.org/doi/10.1145/2843948)
-- [[2] K. Bounsaythip and E. Rinta-Runsala, "Overview of data mining for customer behavior modeling," VTT Information Technology, Research Report TTE1-2001-18, 2001.](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers)
+- [1] [C. A. Gomez-Uribe and N. Hunt, "The Netflix recommender system: Algorithms, business value, and innovation," ACM Transactions on Management Information Systems, vol. 6, no. 4, pp. 1-19, 2015.](https://dl.acm.org/doi/10.1145/2843948)
+- [2] [K. Bounsaythip and E. Rinta-Runsala, "Overview of data mining for customer behavior modeling," VTT Information Technology, Research Report TTE1-2001-18, 2001.](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers)
 
 ## Business Understanding
 
