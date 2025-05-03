@@ -113,7 +113,7 @@ Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi
    ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png)    
    **Penjelasan:** Heatmap korelasi menunjukkan hubungan antar variabel dalam dataset rating. Terlihat bahwa `movieId` dan `timestamp` memiliki korelasi 0.50, yang menunjukkan pola rating film pada periode waktu tertentu.
 
-4. **Film dengan Rating Terbanyak** 
+4. **Film dengan Rating Terbanyak**    
    ![Film dengan Rating Terbanyak](images/bar_chart_movie.png)    
    **Penjelasan:** Visualisasi menunjukkan 20 film yang paling banyak dinilai oleh pengguna. Informasi ini penting untuk memahami film populer yang dapat menjadi dasar dalam rekomendasi berbasis popularitas.
 
