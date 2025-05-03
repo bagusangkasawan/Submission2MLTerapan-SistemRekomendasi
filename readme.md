@@ -4,13 +4,13 @@
 
 Sistem rekomendasi film telah menjadi komponen penting dalam layanan streaming dan platform hiburan modern. Dengan jutaan film yang tersedia, pengguna sering kali kesulitan menemukan konten yang sesuai dengan preferensi mereka. Hal ini dapat menyebabkan pengalaman pengguna yang buruk, penurunan retensi pengguna, dan penurunan pendapatan bagi platform.
 
-Menurut penelitian yang dilakukan oleh Netflix, lebih dari 80% film yang ditonton di platform mereka berasal dari rekomendasi sistem [1]. Selain itu, McKinsey melaporkan bahwa sistem rekomendasi yang efektif dapat meningkatkan penjualan hingga 35% [2]. Hal ini menunjukkan pentingnya pengembangan sistem rekomendasi yang akurat dan personal.
+Netflix telah menemukan bahwa lebih dari 80% film yang ditonton di platform mereka berasal dari rekomendasi sistem (Gomez-Uribe & Hunt, 2015). Sementara itu, sebuah laporan dari McKinsey menyatakan bahwa sistem rekomendasi yang efektif dapat meningkatkan penjualan hingga 35% (Bounsaythip & Rinta-Runsala, 2001). Hal ini menunjukkan bahwa pengembangan sistem rekomendasi yang akurat dan personal memiliki peran penting dalam meningkatkan keterlibatan pengguna serta keuntungan bisnis.
 
 Proyek ini bertujuan untuk mengembangkan sistem rekomendasi film yang dapat membantu pengguna menemukan film yang sesuai dengan minat mereka. Dengan menggunakan dataset MovieLens yang berisi rating dan tag film dari ribuan pengguna, proyek ini akan mengimplementasikan dan membandingkan dua pendekatan sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering berbasis Deep Learning.
 
 **Referensi:**
-- [1] Gomez-Uribe, C. A., & Hunt, N. (2015). *The Netflix recommender system: Algorithms, business value, and innovation*. ACM Transactions on Management Information Systems, 6(4), 1-19. Retrieved from [https://dl.acm.org/doi/10.1145/2843948](https://dl.acm.org/doi/10.1145/2843948).
-- [2] Bounsaythip, K., & Rinta-Runsala, E. (2001). *Overview of data mining for customer behavior modeling*. VTT Information Technology, Research Report TTE1-2001-18. Retrieved from [https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers).
+- Gomez-Uribe, C.A., & Hunt, N. (2015). The Netflix recommender system: Algorithms, business value, and innovation. *ACM Transactions on Management Information Systems*, 6(4), 1-19. Retrieved from [https://dl.acm.org/doi/10.1145/2843948](https://dl.acm.org/doi/10.1145/2843948).
+- Bounsaythip, K., & Rinta-Runsala, E. (2001). Overview of data mining for customer behavior modeling. *VTT Information Technology, Research Report TTE1-2001-18*. Retrieved from [https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers).
 
 ## Business Understanding
 
