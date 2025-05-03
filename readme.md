@@ -97,7 +97,7 @@ Hasil pemeriksaan kondisi data menunjukkan:
    - Pada dataset ratings.csv, teridentifikasi 4.181 rating sebagai outlier berdasarkan metode IQR (Interquartile Range).
    - Outlier ini tetap dipertahankan dalam analisis karena masih berada dalam rentang nilai rating yang valid (0.5-5.0) dan mencerminkan preferensi unik pengguna.
 
-### Exploratory Data Analysis
+### Exploratory Data Analysis (EDA)
 
 Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi data:
 
@@ -106,7 +106,7 @@ Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi
    **Penjelasan:** Berdasarkan box plot yang dibuat, mayoritas rating berada pada rentang 3 hingga 4, menunjukkan bahwa pengguna cenderung memberikan rating positif untuk film yang mereka tonton.
 
 2. **Distribusi Genre Film**
-   ![Distribusi Genre Film](images/bar_chart_genre.png)  
+   ![Distribusi Genre Film](images/bar_chart_genre.png)
    **Penjelasan:** Hasil analisis menunjukkan bahwa Drama adalah genre film yang paling umum dalam dataset, diikuti oleh Comedy. Hal ini mengindikasikan bahwa film bergenre ini memiliki jumlah terbanyak dan kemungkinan memiliki minat tinggi dari pengguna.
 
 3. **Heatmap Korelasi**
