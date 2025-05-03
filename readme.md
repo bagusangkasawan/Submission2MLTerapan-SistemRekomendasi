@@ -110,11 +110,11 @@ Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi
    **Penjelasan:** Hasil analisis menunjukkan bahwa Drama adalah genre film yang paling umum dalam dataset, diikuti oleh Comedy. Hal ini mengindikasikan bahwa film bergenre ini memiliki jumlah terbanyak dan kemungkinan memiliki minat tinggi dari pengguna.
 
 3. **Heatmap Korelasi**    
-   ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png) 
+   ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png)    
    **Penjelasan:** Heatmap korelasi menunjukkan hubungan antar variabel dalam dataset rating. Terlihat bahwa `movieId` dan `timestamp` memiliki korelasi 0.50, yang menunjukkan pola rating film pada periode waktu tertentu.
 
 4. **Film dengan Rating Terbanyak** 
-   ![Film dengan Rating Terbanyak](images/bar_chart_movie.png) 
+   ![Film dengan Rating Terbanyak](images/bar_chart_movie.png)    
    **Penjelasan:** Visualisasi menunjukkan 20 film yang paling banyak dinilai oleh pengguna. Informasi ini penting untuk memahami film populer yang dapat menjadi dasar dalam rekomendasi berbasis popularitas.
 
 5. **Pengguna Paling Aktif**  
