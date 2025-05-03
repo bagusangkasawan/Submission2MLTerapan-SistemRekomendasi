@@ -117,6 +117,16 @@ plt.show()
 
 """**Penjelasan:** Bar chart menunjukkan bahwa **Drama** adalah genre yang paling umum dalam dataset, diikuti oleh **Comedy**, yang menandakan bahwa film bergenre ini paling banyak tersedia dalam data dan kemungkinan besar memiliki minat tinggi dari pengguna."""
 
+corr_matrix = ratings.corr()
+plt.figure(figsize=(8,6))
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Heatmap Korelasi Rating")
+plt.show()
+
+"""**Penjelasan:** Heatmap korelasi menunjukkan hubungan antar variabel dalam dataset rating, dengan korelasi tertinggi antara `movieId` dan `timestamp` sebesar 0.50, yang menunjukkan pola rating tertentu dalam rentang waktu tertentu.
+
+"""
+
 rating_counts = ratings.groupby('movieId')['rating'].count().sort_values(ascending=False)
 rating_counts.head(20).plot(kind='bar', figsize=(10,5))
 plt.title('Top 20 Film dengan Rating Terbanyak')

@@ -8,9 +8,9 @@ Menurut penelitian yang dilakukan oleh Netflix, lebih dari 80% film yang ditonto
 
 Proyek ini bertujuan untuk mengembangkan sistem rekomendasi film yang dapat membantu pengguna menemukan film yang sesuai dengan minat mereka. Dengan menggunakan dataset MovieLens yang berisi rating dan tag film dari ribuan pengguna, proyek ini akan mengimplementasikan dan membandingkan dua pendekatan sistem rekomendasi: Content-Based Filtering dan Collaborative Filtering berbasis Deep Learning.
 
-[1] C. A. Gomez-Uribe and N. Hunt, "The Netflix recommender system: Algorithms, business value, and innovation," ACM Transactions on Management Information Systems, vol. 6, no. 4, pp. 1-19, 2015.
-
-[2] K. Bounsaythip and E. Rinta-Runsala, "Overview of data mining for customer behavior modeling," VTT Information Technology, Research Report TTE1-2001-18, 2001.
+**Referensi:**
+[[1] C. A. Gomez-Uribe and N. Hunt, "The Netflix recommender system: Algorithms, business value, and innovation," ACM Transactions on Management Information Systems, vol. 6, no. 4, pp. 1-19, 2015.](https://dl.acm.org/doi/10.1145/2843948)
+[[2] K. Bounsaythip and E. Rinta-Runsala, "Overview of data mining for customer behavior modeling," VTT Information Technology, Research Report TTE1-2001-18, 2001.](https://cris.vtt.fi/en/publications/overview-of-data-mining-for-customer-behavior-modeling-louhi-vers)
 
 ## Business Understanding
 
@@ -102,19 +102,23 @@ Hasil pemeriksaan kondisi data menunjukkan:
 Untuk memahami dataset dengan lebih baik, dilakukan beberapa analisis eksplorasi data:
 
 1. **Distribusi Rating**: 
-   
+   ![Distribusi Rating](images/box_plot_rating.png)  
    Berdasarkan box plot yang dibuat, mayoritas rating berada pada rentang 3 hingga 4, menunjukkan bahwa pengguna cenderung memberikan rating positif untuk film yang mereka tonton.
 
 2. **Distribusi Genre Film**:
-   
+   ![Distribusi Genre Film](images/bar_chart_genre.png)  
    Hasil analisis menunjukkan bahwa Drama adalah genre film yang paling umum dalam dataset, diikuti oleh Comedy. Hal ini mengindikasikan bahwa film bergenre ini memiliki jumlah terbanyak dan kemungkinan memiliki minat tinggi dari pengguna.
 
-3. **Film dengan Rating Terbanyak**:
-   
+3. **Heatmap Korelasi**:
+   ![Heatmap Korelasi](images/heatmap_korelasi_ratings.png)
+   Heatmap korelasi menunjukkan hubungan antar variabel dalam dataset rating. Terlihat bahwa `movieId` dan `timestamp` memiliki korelasi 0.50, yang menunjukkan pola rating film pada periode waktu tertentu.
+
+4. **Film dengan Rating Terbanyak**:
+   ![Film dengan Rating Terbanyak](images/bar_chart_movie.png)
    Visualisasi menunjukkan 20 film yang paling banyak dinilai oleh pengguna. Informasi ini penting untuk memahami film populer yang dapat menjadi dasar dalam rekomendasi berbasis popularitas.
 
-4. **Pengguna Paling Aktif**:
-   
+5. **Pengguna Paling Aktif**:
+   ![Pengguna Paling Aktif](images/bar_chart_user.png)
    Ditemukan 20 pengguna yang memberikan rating terbanyak. Pengguna-pengguna aktif ini mungkin memiliki preferensi yang lebih spesifik dan dapat memberikan wawasan lebih dalam terhadap perilaku penonton.
 
 ## Data Preparation
